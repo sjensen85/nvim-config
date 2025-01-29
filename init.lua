@@ -4,6 +4,10 @@ vim.o.smartindent = true
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
 
+vim.api.nvim_set_keymap("n", "<C-n>", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>f", ":NvimTreeFocus<CR>", { noremap = true, silent = true })
+
+
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
@@ -39,11 +43,11 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
-require'lspconfig'.ols.setup {
+require"lspconfig".ols.setup {
   init_options = {
 		checker_args = "-strict-style",
 		collections = {
-			{ name = "shared", path = vim.fn.expand('$HOME/odin-lib') }
+			{ name = "shared", path = vim.fn.expand("$HOME/odin-lib") }
 		},
 	},
 }
